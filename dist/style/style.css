@@ -16,7 +16,19 @@
 }
 
 .font-app-size-2{
-    font-size: 1.0vmax;
+    font-size: 0.9vmax;
+}
+
+.font-app-size-buttom{
+    font-size: 0.8vmax;
+}
+
+.size-app-icon{
+    font-size: 1.8vmax;
+}
+
+.size-app-buttom {
+    box-sizing: content-box;
 }
 
 .shadow-app{

@@ -83,3 +83,103 @@ export class AppTextBox extends Widget {
     }
 
 }
+
+// Use Icones Bootstrap * "bi bi-xxx"
+export class AppCustomButton extends Widget {
+    public buttonElement: HTMLButtonElement;
+
+    private text: string;
+    public onClick: Function;
+    private btnClass: string;
+    private nameIcon: string;
+    private iconSize: string;
+    private widthSize: string;
+
+    constructor({ name, text, btnClass = 'btn-success', nameIcon = 'bi-question', iconSize = '1rem', widthSize = '100px'}:
+        {
+            name: string;
+            text: string;
+            btnClass?: string;
+            nameIcon?: string;
+            iconSize?: string;
+            widthSize?: string;
+
+        }) {
+        super(name);
+
+        this.text = text;
+        this.btnClass = btnClass;
+        this.nameIcon = nameIcon;
+        this.iconSize = iconSize;
+        this.widthSize = widthSize;
+
+          }
+
+    protected htmlTemplate(): string {
+        return `
+                <button id="appCustomButton" type="button" class="p-1 btn size-app-buttom">
+                    <div class="d-flex flex-column p-0 m-0">
+                        <i class="${this.nameIcon}" style="font-size: ${this.iconSize}; color: white;"></i>
+                        <div class="font-app-size-buttom p-0" style="width: ${this.widthSize}">${this.text}</div>                
+                    </div>
+                </button>
+            `
+    }
+    protected onWidgetDidLoad(): void {
+        var self = this;
+        this.buttonElement = this.elementById('appCustomButton');
+        this.buttonElement.classList.add(this.btnClass);
+
+        if (self.onClick != null) {
+            this.buttonElement.onclick = function (ev) {
+                self.onClick(ev);
+            };
+        }
+    }
+
+    public setText(text: string) {
+        this.buttonElement.innerText = text;
+    }
+
+    public value(): string {
+        throw new Error("Button does not support value");
+    }
+
+    public setVisible(visible: boolean): void {
+        this.buttonElement.hidden = (visible == false);
+    }
+
+    public setEnabled(enabled: boolean): void {
+        this.buttonElement.disabled = (enabled == false);
+    }
+
+    public addCSSClass(className: string): void {
+        this.buttonElement.classList.add(className);
+    }
+
+    public removeCSSClass(className: string): void {
+        this.buttonElement.classList.remove(className);
+    }
+
+    public applyCSS(propertyName: string, propertyValue: string): void {
+        this.buttonElement.style.setProperty(propertyName, propertyValue);
+    }
+
+    public setPosition(position: string,
+        marginLeft: string,
+        marginTop: string,
+        marginRight?: string,
+        marginBottom?: string,
+        transform?: string): void {
+        this.buttonElement.style.position = position;
+        this.buttonElement.style.left = marginLeft;
+        this.buttonElement.style.top = marginTop;
+        this.buttonElement.style.right = `${marginRight}`;
+        this.buttonElement.style.bottom = `${marginBottom}`;
+        this.buttonElement.style.transform = `${transform}`;
+    }
+
+    public setCustomPresenter(renderer: ICustomWidgetPresenter<AppCustomButton>): void {
+        renderer.render(this);
+    }
+}

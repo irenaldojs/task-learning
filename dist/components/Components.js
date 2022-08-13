@@ -55,3 +55,66 @@ class AppTextBox extends Widget {
         throw new Error("Method not implemented.");
     }
 }
+// Use Icones Bootstrap * "bi bi-xxx"
+class AppCustomButton extends Widget {
+    constructor({ name, text, btnClass = 'btn-success', nameIcon = 'bi-question', iconSize = '1rem', widthSize = '100px' }) {
+        super(name);
+        this.text = text;
+        this.btnClass = btnClass;
+        this.nameIcon = nameIcon;
+        this.iconSize = iconSize;
+        this.widthSize = widthSize;
+    }
+    htmlTemplate() {
+        return `
+                <button id="appCustomButton" type="button" class="p-1 btn size-app-buttom">
+                    <div class="d-flex flex-column p-0 m-0">
+                        <i class="${this.nameIcon}" style="font-size: ${this.iconSize}; color: white;"></i>
+                        <div class="font-app-size-buttom p-0" style="width: ${this.widthSize}">${this.text}</div>                
+                    </div>
+                </button>
+            `;
+    }
+    onWidgetDidLoad() {
+        var self = this;
+        this.buttonElement = this.elementById('appCustomButton');
+        this.buttonElement.classList.add(this.btnClass);
+        if (self.onClick != null) {
+            this.buttonElement.onclick = function (ev) {
+                self.onClick(ev);
+            };
+        }
+    }
+    setText(text) {
+        this.buttonElement.innerText = text;
+    }
+    value() {
+        throw new Error("Button does not support value");
+    }
+    setVisible(visible) {
+        this.buttonElement.hidden = (visible == false);
+    }
+    setEnabled(enabled) {
+        this.buttonElement.disabled = (enabled == false);
+    }
+    addCSSClass(className) {
+        this.buttonElement.classList.add(className);
+    }
+    removeCSSClass(className) {
+        this.buttonElement.classList.remove(className);
+    }
+    applyCSS(propertyName, propertyValue) {
+        this.buttonElement.style.setProperty(propertyName, propertyValue);
+    }
+    setPosition(position, marginLeft, marginTop, marginRight, marginBottom, transform) {
+        this.buttonElement.style.position = position;
+        this.buttonElement.style.left = marginLeft;
+        this.buttonElement.style.top = marginTop;
+        this.buttonElement.style.right = `${marginRight}`;
+        this.buttonElement.style.bottom = `${marginBottom}`;
+        this.buttonElement.style.transform = `${transform}`;
+    }
+    setCustomPresenter(renderer) {
+        renderer.render(this);
+    }
+}

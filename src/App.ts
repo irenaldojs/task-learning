@@ -24,6 +24,10 @@ export class App extends UIPage {
                 cssPath: 'bootstrap.css',
                 jsPath: 'bootstrap.js'
             });
+            this.importLib({
+                libName: 'bootstrap-icons-1.9.1',
+                cssPath: 'bootstrap-icons.css'
+            });
             //#endregion 
 
             this.navigateToView(new HomeView());
