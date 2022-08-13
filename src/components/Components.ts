@@ -88,6 +88,7 @@ export class AppTextBox extends Widget {
 export class AppCustomButton extends Widget {
 
     public buttonElement: HTMLButtonElement;
+    public iconELement: HTMLDivElement;
     public textElement: HTMLDivElement;
 
     private text: string;
@@ -119,9 +120,9 @@ export class AppCustomButton extends Widget {
     //<i class="${this.iconClass}" style="font-size: ${this.iconSize}; color: white;"></i>
     protected htmlTemplate(): string {
         return `
-                <button id="appCustomButton" type="button" class="btn size-app-buttom p-1">
-                        <i id="appIcon" style="color:white;";"></i>
-                        <div id="appText" class="font-app-size-buttom p-0" style="color:white;"></div>                
+                <button id="appCustomButton" type="button" class="btn size-app-buttom text-white d-flex flex-column align-items-center p-0 mx-2">
+                        <i id="appIcon" class="bi"></i>
+                        <div id="appText" class="font-app-size-buttom mx-1"></div>
                     </div>
                 </button>
             `
@@ -130,11 +131,12 @@ export class AppCustomButton extends Widget {
         var self = this;
         this.buttonElement = this.elementById('appCustomButton');
         this.textElement = this.elementById('appText')
+        this.iconELement = this.elementById('appIcon')
         this.buttonElement.classList.add(this.btnClass);
-        this.setText(this.text);
-        this.applyCSSById('appText', 'width', this.widthSize);
-        this.applyCSSById('appIcon', 'font-size', this.iconSize);
-        this.addCSSClassById('appIcon', this.iconClass);
+        this.buttonElement.style.setProperty('min-width', this.widthSize)
+        this.textElement.innerText = this.text;
+        this.iconELement.style.setProperty('font-size', this.iconSize);
+        this.iconELement.classList.add(this.iconClass);
 
 
         if(self.onClick != null) {
@@ -146,17 +148,6 @@ export class AppCustomButton extends Widget {
 
     public setText(text: string) {
         this.textElement.innerText = text;
-    }
-    
-
-    private addCSSClassById(nameId: string,  className: string) {
-        const element: HTMLDivElement = this.elementById(nameId);
-        element.classList.add(className);
-    }
-
-    public applyCSSById(nameId: string,  propertyName: string, propertyValue: string): void {
-        const element: HTMLDivElement = this.elementById(nameId);
-        element.style.setProperty(propertyName, propertyValue);
     }
 
     public value(): string {
