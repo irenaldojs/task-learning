@@ -9,3 +9,16 @@
 .font-app-green{
     color: #3CB371;
 }
+
+.font-app-size-1{
+    font-size: 2.0vmax;
+    font-weight: bold;
+}
+
+.font-app-size-2{
+    font-size: 1.0vmax;
+}
+
+.shadow-app{
+    box-shadow:10px 5px 5px rgba(0, 0, 0, .2)
+}

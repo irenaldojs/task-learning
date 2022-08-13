@@ -1,6 +1,7 @@
 import { HomeView } from './views/Home';
 import { DefaultExceptionPage, UIPage } from "./Objective-UI";
 
+
 export class App extends UIPage {
     constructor(mainDoc: Document) {
         super(mainDoc);
