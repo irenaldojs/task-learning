@@ -1,14 +1,22 @@
 ﻿"use strict";
+//Object.defineProperty(exports, "__esModule", { value: true });
+//exports.HomeView = void 0;
 class HomeView extends UIView {
     constructor() {
         super();
         this.caixa = '01';
         this.operador = 'Emerson Tinoco';
+        this.produtosCliente = [
+            new Product({ name: 'Escova de dentes', value: 2.99, count: 2 }),
+            new Product({ name: 'Pasta de dentes', value: 4.99, count: 2 }),
+            new Product({ name: 'Shampoo', value: 9.99, count: 2 }),
+            new Product({ name: 'Fralda', value: 19.99, count: 2 }),
+        ];
         // -----------------------------Primeira Coluna ------------------------------------- //
         // ---- Linha 1 --- //
         this.widthButton = '90px';
         this.invoiceButtom = new AppCustomButton({ name: 'invoiceButtom', btnClass: 'btn-success', text: 'NOTA FISCAL',
-            iconClass: 'bi-cloud-arrow-up-fill', iconSize: '1.7rem', widthSize: this.widthButton });
+            iconClass: 'bi-cloud-arrow-up-fill', iconSize: '1.7rem', widthSize: this.widthButton, onClick: this.CliqueBotao });
         this.contingencyButtom = new AppCustomButton({ name: 'contingencyButtom', btnClass: 'btn-warning', text: 'CONTINGÊNCIA',
             iconClass: 'bi-exclamation-square-fill', iconSize: '1.7rem', widthSize: this.widthButton });
         this.balanceButtom = new AppCustomButton({ name: 'balanceButtom', btnClass: 'btn-danger', text: 'BALANÇO',
@@ -18,6 +26,7 @@ class HomeView extends UIView {
         this.listTitle = new UIHead({ name: 'listTitle', headType: 'h2', text: '' });
         this.calculatorButtom = new AppCustomButton({ name: 'calculatorButtom', btnClass: 'btn-success', text: 'CALCULADORA',
             iconClass: 'bi-calculator-fill', iconSize: '1.7rem', widthSize: this.widthButton });
+        // ---- Tabela de Produtos --- //
         // -----------------------------Terceira Coluna ------------------------------------- //
         // Texto de atalhos
         this.shortcut = ['F4 - CLIENTE', 'F2 - DESCONTO / ACRÉSCIMO', 'F6 - PAGAMENTO AVANÇADO', 'F10 - RECEBIMENTO RÁPIDO', 'F11 - MAIS ATALHOS'];
@@ -30,6 +39,14 @@ class HomeView extends UIView {
             name: 'text-box-shortcut', titleText: 'ATALHOS', contentText: this.shortcut
         });
         HomeView.$ = this;
+    }
+    CliqueBotao() {
+        var funcaoJS = new VirtualFunction({
+            fnName: 'minhaFuncao',
+            fnArgNames: ['nome'],
+            fnContent: `alert(nome)`,
+        });
+        funcaoJS.call('Irenaldo');
     }
     buildLayout() {
         //const panelClass = 'bg-app-grey font-app-green d-flex flex-column justify-content-center align-items-center py-1';
@@ -92,3 +109,4 @@ class HomeView extends UIView {
         this.listTitle.addCSSClass('font-app-green');
     }
 }
+//exports.HomeView = HomeView;

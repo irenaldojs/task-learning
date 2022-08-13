@@ -1,7 +1,7 @@
-import { UITextBox, UIHead, UIList } from './../Objective-UI';
-import { AppCustomButton } from './../components/Components';
-import { Col, Row, UIView, ViewLayout, UIImage} from "../Objective-UI";
-import { AppTextBox } from '../components/Components';
+import { VirtualFunction } from './../Objective-UI';
+import { AppCustomButton, AppTextBox } from './../components/Components';
+import { Col, Row, UIView, ViewLayout, UIImage, UIHead} from "../Objective-UI";
+import { Product } from '../viewModel/Product';
 
 
 export class HomeView extends UIView {
@@ -10,12 +10,19 @@ export class HomeView extends UIView {
 
     private caixa: string = '01'
     private operador: string = 'Emerson Tinoco'
+    
+    private produtosCliente: Product[] = [
+        new Product({name: 'Escova de dentes', value: 2.99, count: 2}),
+        new Product({name: 'Pasta de dentes', value: 4.99, count: 2}),
+        new Product({name: 'Shampoo', value: 9.99, count: 2}),
+        new Product({name: 'Fralda', value: 19.99, count: 2}),
+    ]
 
     // -----------------------------Primeira Coluna ------------------------------------- //
         // ---- Linha 1 --- //
     widthButton = '90px'
     invoiceButtom = new AppCustomButton({name: 'invoiceButtom', btnClass: 'btn-success', text: 'NOTA FISCAL', 
-        iconClass: 'bi-cloud-arrow-up-fill', iconSize: '1.7rem', widthSize: this.widthButton })
+        iconClass: 'bi-cloud-arrow-up-fill', iconSize: '1.7rem', widthSize: this.widthButton, onClick: this.CliqueBotao})
     contingencyButtom = new AppCustomButton({name: 'contingencyButtom', btnClass: 'btn-warning', text: 'CONTINGÊNCIA', 
         iconClass: 'bi-exclamation-square-fill', iconSize: '1.7rem', widthSize: this.widthButton })
     balanceButtom = new AppCustomButton({name: 'balanceButtom', btnClass: 'btn-danger', text: 'BALANÇO', 
@@ -46,6 +53,15 @@ export class HomeView extends UIView {
         super();
 
         HomeView.$ = this;
+    }
+
+    private CliqueBotao(){
+        var funcaoJS = new VirtualFunction({
+            fnName: 'minhaFuncao',
+            fnArgNames: ['nome'],
+            fnContent: `alert(nome)`,            
+        })
+        funcaoJS.call('Irenaldo')
     }
 
     buildLayout(): ViewLayout {
@@ -106,6 +122,7 @@ export class HomeView extends UIView {
         this.listTitle.setText('Lista de Compras'.toUpperCase())
         this.listTitle.addCSSClass('font-app-green')
 
+        
     }
 
 }

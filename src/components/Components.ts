@@ -98,7 +98,7 @@ export class AppCustomButton extends Widget {
     private iconSize: string;
     private widthSize: string;
 
-    constructor({ name, text, btnClass = 'btn-success', iconClass = 'bi-question', iconSize = '1rem', widthSize = '100px'}:
+    constructor({ name, text, btnClass = 'btn-success', iconClass = 'bi-question', iconSize = '1rem', widthSize = '100px', onClick = null}:
         {
             name: string;
             text: string;
@@ -106,7 +106,7 @@ export class AppCustomButton extends Widget {
             iconClass?: string;
             iconSize?: string;
             widthSize?: string;
-
+            onClick?: Function;
         }) {
         super(name);
 
@@ -115,6 +115,7 @@ export class AppCustomButton extends Widget {
         this.iconClass = iconClass;
         this.iconSize = iconSize;
         this.widthSize = widthSize;
+        this.onClick = onClick;
 
           }
     //<i class="${this.iconClass}" style="font-size: ${this.iconSize}; color: white;"></i>
@@ -191,4 +192,5 @@ export class AppCustomButton extends Widget {
     public setCustomPresenter(renderer: ICustomWidgetPresenter<AppCustomButton>): void {
         renderer.render(this);
     }
+
 }

@@ -1,4 +1,6 @@
 ﻿"use strict";
+//Object.defineProperty(exports, "__esModule", { value: true });
+//exports.AppCustomButton = //exports.AppTextBox = void 0;
 class AppTextBox extends Widget {
     constructor({ name, titleText = null, contentText = [] }) {
         super(name); //mandatory for Widget inherited
@@ -55,15 +57,17 @@ class AppTextBox extends Widget {
         throw new Error("Method not implemented.");
     }
 }
+//exports.AppTextBox = AppTextBox;
 // Use Icones Bootstrap * "bi bi-xxx"
 class AppCustomButton extends Widget {
-    constructor({ name, text, btnClass = 'btn-success', iconClass = 'bi-question', iconSize = '1rem', widthSize = '100px' }) {
+    constructor({ name, text, btnClass = 'btn-success', iconClass = 'bi-question', iconSize = '1rem', widthSize = '100px', onClick = null }) {
         super(name);
         this.text = text;
         this.btnClass = btnClass;
         this.iconClass = iconClass;
         this.iconSize = iconSize;
         this.widthSize = widthSize;
+        this.onClick = onClick;
     }
     //<i class="${this.iconClass}" style="font-size: ${this.iconSize}; color: white;"></i>
     htmlTemplate() {
@@ -124,3 +128,4 @@ class AppCustomButton extends Widget {
         renderer.render(this);
     }
 }
+//exports.AppCustomButton = AppCustomButton;
