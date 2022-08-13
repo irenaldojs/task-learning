@@ -86,21 +86,23 @@ export class AppTextBox extends Widget {
 
 // Use Icones Bootstrap * "bi bi-xxx"
 export class AppCustomButton extends Widget {
+
     public buttonElement: HTMLButtonElement;
+    public textElement: HTMLDivElement;
 
     private text: string;
     public onClick: Function;
     private btnClass: string;
-    private nameIcon: string;
+    private iconClass: string;
     private iconSize: string;
     private widthSize: string;
 
-    constructor({ name, text, btnClass = 'btn-success', nameIcon = 'bi-question', iconSize = '1rem', widthSize = '100px'}:
+    constructor({ name, text, btnClass = 'btn-success', iconClass = 'bi-question', iconSize = '1rem', widthSize = '100px'}:
         {
             name: string;
             text: string;
             btnClass?: string;
-            nameIcon?: string;
+            iconClass?: string;
             iconSize?: string;
             widthSize?: string;
 
@@ -109,18 +111,17 @@ export class AppCustomButton extends Widget {
 
         this.text = text;
         this.btnClass = btnClass;
-        this.nameIcon = nameIcon;
+        this.iconClass = iconClass;
         this.iconSize = iconSize;
         this.widthSize = widthSize;
 
           }
-
+    //<i class="${this.iconClass}" style="font-size: ${this.iconSize}; color: white;"></i>
     protected htmlTemplate(): string {
         return `
-                <button id="appCustomButton" type="button" class="p-1 btn size-app-buttom">
-                    <div class="d-flex flex-column p-0 m-0">
-                        <i class="${this.nameIcon}" style="font-size: ${this.iconSize}; color: white;"></i>
-                        <div class="font-app-size-buttom p-0" style="width: ${this.widthSize}">${this.text}</div>                
+                <button id="appCustomButton" type="button" class="btn size-app-buttom p-1">
+                        <i id="appIcon" style="color:white;";"></i>
+                        <div id="appText" class="font-app-size-buttom p-0" style="color:white;"></div>                
                     </div>
                 </button>
             `
@@ -128,9 +129,15 @@ export class AppCustomButton extends Widget {
     protected onWidgetDidLoad(): void {
         var self = this;
         this.buttonElement = this.elementById('appCustomButton');
+        this.textElement = this.elementById('appText')
         this.buttonElement.classList.add(this.btnClass);
+        this.setText(this.text);
+        this.applyCSSById('appText', 'width', this.widthSize);
+        this.applyCSSById('appIcon', 'font-size', this.iconSize);
+        this.addCSSClassById('appIcon', this.iconClass);
 
-        if (self.onClick != null) {
+
+        if(self.onClick != null) {
             this.buttonElement.onclick = function (ev) {
                 self.onClick(ev);
             };
@@ -138,7 +145,18 @@ export class AppCustomButton extends Widget {
     }
 
     public setText(text: string) {
-        this.buttonElement.innerText = text;
+        this.textElement.innerText = text;
+    }
+    
+
+    private addCSSClassById(nameId: string,  className: string) {
+        const element: HTMLDivElement = this.elementById(nameId);
+        element.classList.add(className);
+    }
+
+    public applyCSSById(nameId: string,  propertyName: string, propertyValue: string): void {
+        const element: HTMLDivElement = this.elementById(nameId);
+        element.style.setProperty(propertyName, propertyValue);
     }
 
     public value(): string {

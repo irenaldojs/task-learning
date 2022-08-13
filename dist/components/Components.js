@@ -57,20 +57,20 @@ class AppTextBox extends Widget {
 }
 // Use Icones Bootstrap * "bi bi-xxx"
 class AppCustomButton extends Widget {
-    constructor({ name, text, btnClass = 'btn-success', nameIcon = 'bi-question', iconSize = '1rem', widthSize = '100px' }) {
+    constructor({ name, text, btnClass = 'btn-success', iconClass = 'bi-question', iconSize = '1rem', widthSize = '100px' }) {
         super(name);
         this.text = text;
         this.btnClass = btnClass;
-        this.nameIcon = nameIcon;
+        this.iconClass = iconClass;
         this.iconSize = iconSize;
         this.widthSize = widthSize;
     }
+    //<i class="${this.iconClass}" style="font-size: ${this.iconSize}; color: white;"></i>
     htmlTemplate() {
         return `
-                <button id="appCustomButton" type="button" class="p-1 btn size-app-buttom">
-                    <div class="d-flex flex-column p-0 m-0">
-                        <i class="${this.nameIcon}" style="font-size: ${this.iconSize}; color: white;"></i>
-                        <div class="font-app-size-buttom p-0" style="width: ${this.widthSize}">${this.text}</div>                
+                <button id="appCustomButton" type="button" class="btn size-app-buttom p-1">
+                        <i id="appIcon" style="color:white;";"></i>
+                        <div id="appText" class="font-app-size-buttom p-0" style="color:white;"></div>                
                     </div>
                 </button>
             `;
@@ -78,7 +78,12 @@ class AppCustomButton extends Widget {
     onWidgetDidLoad() {
         var self = this;
         this.buttonElement = this.elementById('appCustomButton');
+        this.textElement = this.elementById('appText');
         this.buttonElement.classList.add(this.btnClass);
+        this.setText(this.text);
+        this.applyCSSById('appText', 'width', this.widthSize);
+        this.applyCSSById('appIcon', 'font-size', this.iconSize);
+        this.addCSSClassById('appIcon', this.iconClass);
         if (self.onClick != null) {
             this.buttonElement.onclick = function (ev) {
                 self.onClick(ev);
@@ -86,7 +91,15 @@ class AppCustomButton extends Widget {
         }
     }
     setText(text) {
-        this.buttonElement.innerText = text;
+        this.textElement.innerText = text;
+    }
+    addCSSClassById(nameId, className) {
+        const element = this.elementById(nameId);
+        element.classList.add(className);
+    }
+    applyCSSById(nameId, propertyName, propertyValue) {
+        const element = this.elementById(nameId);
+        element.style.setProperty(propertyName, propertyValue);
     }
     value() {
         throw new Error("Button does not support value");

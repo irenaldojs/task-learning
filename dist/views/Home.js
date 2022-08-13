@@ -3,10 +3,10 @@ class HomeView extends UIView {
     constructor() {
         super();
         // -----------------------------Primeira Coluna ------------------------------------- //
-        this.invoiceButtom = new AppCustomButton({ name: 'invoiceButtom', btnClass: 'btn-success', text: 'NOTA FISCAL', nameIcon: 'bi-cloud-arrow-up-fill', iconSize: '1.7rem', widthSize: '80px' });
-        this.contingencyButtom = new AppCustomButton({ name: 'contingencyButtom', btnClass: 'btn-warning', text: 'CONTINGÊNCIA', nameIcon: 'bi-exclamation-square-fill', iconSize: '1.7rem', widthSize: '80px' });
-        this.balanceButtom = new AppCustomButton({ name: 'balanceButtom', btnClass: 'btn-danger', text: 'BALANÇO', nameIcon: 'bi-repeat', iconSize: '1.7rem', widthSize: '80px' });
-        this.calculatorButtom = new AppCustomButton({ name: 'calculatorButtom', btnClass: 'btn-success', text: 'CALCULADORA', nameIcon: 'bi-calculator-fill', iconSize: '1.7rem', widthSize: '80px' });
+        this.invoiceButtom = new AppCustomButton({ name: 'invoiceButtom', btnClass: 'btn-success', text: 'NOTA FISCAL', iconClass: 'bi-cloud-arrow-up-fill', iconSize: '1.7rem', widthSize: '80px' });
+        this.contingencyButtom = new AppCustomButton({ name: 'contingencyButtom', btnClass: 'btn-warning', text: 'CONTINGÊNCIA', iconClass: 'bi-exclamation-square-fill', iconSize: '1.7rem', widthSize: '80px' });
+        this.balanceButtom = new AppCustomButton({ name: 'balanceButtom', btnClass: 'btn-danger', text: 'BALANÇO', iconClass: 'bi-repeat', iconSize: '1.7rem', widthSize: '80px' });
+        this.calculatorButtom = new AppCustomButton({ name: 'calculatorButtom', btnClass: 'btn-success', text: 'CALCULADORA', iconClass: 'bi-calculator-fill', iconSize: '1.7rem', widthSize: '80px' });
         // -----------------------------Terceira Coluna ------------------------------------- //
         // Texto de atalhos
         this.shortcut = ['F4 - CLIENTE', 'F2 - DESCONTO / ACRÉSCIMO', 'F6 - PAGAMENTO AVANÇADO', 'F10 - RECEBIMENTO RÁPIDO', 'F11 - MAIS ATALHOS'];
