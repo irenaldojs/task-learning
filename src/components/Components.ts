@@ -1,4 +1,5 @@
-import { UIHead } from './../Objective-UI';
+import { Product } from './../viewModel/Product';
+import { UIHead, ListItem, UITemplateView, ViewLayout } from './../Objective-UI';
 import { ICustomWidgetPresenter, Widget } from "../Objective-UI";
 
 export class AppTextBox extends Widget {
@@ -191,6 +192,102 @@ export class AppCustomButton extends Widget {
 
     public setCustomPresenter(renderer: ICustomWidgetPresenter<AppCustomButton>): void {
         renderer.render(this);
+    }
+
+}
+
+export class AppTableItems extends Widget {
+
+    public tableElement: HTMLTableElement;
+    public tableHeadElement: HTMLDivElement;
+    public tableRowsLement: HTMLDivElement;
+
+    private tableHead: string[]
+    private tableRows: Product[]
+
+    constructor({name, tableHead = [], tableRows = null}:{
+        name: string,
+        tableHead?: string[],
+        tableRows?: Product[]
+    }){
+        super(name)
+        this.tableHead = tableHead
+        this.tableRows = tableRows
+    }
+
+    protected htmlTemplate(): string {
+        return `
+            <table id="appTableItems" class='table'>
+                <thead id="tableHead"> </thead>
+                <tbody id="tablebody"> </tbody>
+            </table>
+        `
+    }
+    protected onWidgetDidLoad(): void {
+        this.tableElement = this.elementById('appTableItems')
+        this.tableHeadElement = this.elementById('tableHead')
+        this.tableRowsLement = this.elementById('tablebody')
+        
+        this.tableElement.createTHead()
+        this.tableElement.createTBody()
+
+        this.tableMount()
+    }
+    public tableMount(){
+        // Head Mount
+        let tHeadRow = '<tr>'
+        this.tableHead.forEach((product, i) => {
+            let lastHead = this.tableHead[-1] === product ? 'class=text-end' : ''
+
+            tHeadRow += `<th id="th_${i}" ${lastHead}>${product}</th>`
+        })
+        tHeadRow += '</tr>'
+        this.tableHeadElement.innerHTML = tHeadRow
+
+        // Body Mount
+        if(this.tableRows != null){
+            let tBodyRows = ''
+            this.tableRows.forEach( (product, i) => {            
+                const index = (i + 1).toString()
+                tBodyRows += '<tr class="table-light p-0 m-0">'
+                product.getArrayValues(index).forEach( j => {
+                    tBodyRows += `<td class="p-2 m-0">${j}</td>`
+                })
+                tBodyRows += '</tr>'
+            })
+            //this.tableRowsLement.
+            this.tableRowsLement.innerHTML = tBodyRows
+        }
+    }
+
+    public setProdutcs(products: Product[] ){
+        this.tableRows = products
+        this.tableMount()
+    }
+
+    public setCustomPresenter(presenter: ICustomWidgetPresenter<Widget>): void {
+        throw new Error('Method not implemented.');
+    }
+    public value(): string {
+        throw new Error('Method not implemented.');
+    }
+    public setEnabled(enabled: boolean): void {
+        throw new Error('Method not implemented.');
+    }
+    public addCSSClass(className: string): void {
+        throw new Error('Method not implemented.');
+    }
+    public removeCSSClass(className: string): void {
+        throw new Error('Method not implemented.');
+    }
+    public applyCSS(propertyName: string, propertyValue: string): void {
+        throw new Error('Method not implemented.');
+    }
+    public setPosition(position: string, marginLeft: string, marginTop: string, marginRight: string, marginBottom: string, transform?: string): void {
+        throw new Error('Method not implemented.');
+    }
+    public setVisible(visible: boolean): void {
+        throw new Error('Method not implemented.');
     }
 
 }

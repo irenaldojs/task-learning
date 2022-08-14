@@ -7,6 +7,9 @@ class Product {
         this.value = value;
         this.count = count;
     }
+    getArrayValues(index) {
+        return [index, this.name, this.count.toString(), this.getTotalValues().toString()];
+    }
     getTotalValues() {
         return this.value * this.count;
     }

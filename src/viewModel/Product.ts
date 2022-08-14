@@ -18,6 +18,10 @@ export class Product {
         this.count = count
     }
 
+    public getArrayValues(index: string ){
+        return [index, this.name, this.count.toString(), this.getTotalValues().toString()]
+    }
+
     public getTotalValues(){
         return this.value * this.count
     }

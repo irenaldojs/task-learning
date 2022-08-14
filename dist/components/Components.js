@@ -1,6 +1,6 @@
 ﻿"use strict";
 //Object.defineProperty(exports, "__esModule", { value: true });
-//exports.AppCustomButton = //exports.AppTextBox = void 0;
+//exports.AppTableItems = //exports.AppCustomButton = //exports.AppTextBox = void 0;
 class AppTextBox extends Widget {
     constructor({ name, titleText = null, contentText = [] }) {
         super(name); //mandatory for Widget inherited
@@ -129,3 +129,79 @@ class AppCustomButton extends Widget {
     }
 }
 //exports.AppCustomButton = AppCustomButton;
+class AppTableItems extends Widget {
+    constructor({ name, tableHead = [], tableRows = null }) {
+        super(name);
+        this.tableHead = tableHead;
+        this.tableRows = tableRows;
+    }
+    htmlTemplate() {
+        return `
+            <table id="appTableItems" class='table'>
+                <thead id="tableHead"> </thead>
+                <tbody id="tablebody"> </tbody>
+            </table>
+        `;
+    }
+    onWidgetDidLoad() {
+        this.tableElement = this.elementById('appTableItems');
+        this.tableHeadElement = this.elementById('tableHead');
+        this.tableRowsLement = this.elementById('tablebody');
+        this.tableElement.createTHead();
+        this.tableElement.createTBody();
+        this.tableMount();
+    }
+    tableMount() {
+        // Head Mount
+        let tHeadRow = '<tr>';
+        this.tableHead.forEach((product, i) => {
+            let lastHead = this.tableHead[-1] === product ? 'class=text-end' : '';
+            tHeadRow += `<th id="th_${i}" ${lastHead}>${product}</th>`;
+        });
+        tHeadRow += '</tr>';
+        this.tableHeadElement.innerHTML = tHeadRow;
+        // Body Mount
+        if (this.tableRows != null) {
+            let tBodyRows = '';
+            this.tableRows.forEach((product, i) => {
+                const index = (i + 1).toString();
+                tBodyRows += '<tr class="table-light p-0 m-0">';
+                product.getArrayValues(index).forEach(j => {
+                    tBodyRows += `<td class="p-2 m-0">${j}</td>`;
+                });
+                tBodyRows += '</tr>';
+            });
+            //this.tableRowsLement.
+            this.tableRowsLement.innerHTML = tBodyRows;
+        }
+    }
+    setProdutcs(products) {
+        this.tableRows = products;
+        this.tableMount();
+    }
+    setCustomPresenter(presenter) {
+        throw new Error('Method not implemented.');
+    }
+    value() {
+        throw new Error('Method not implemented.');
+    }
+    setEnabled(enabled) {
+        throw new Error('Method not implemented.');
+    }
+    addCSSClass(className) {
+        throw new Error('Method not implemented.');
+    }
+    removeCSSClass(className) {
+        throw new Error('Method not implemented.');
+    }
+    applyCSS(propertyName, propertyValue) {
+        throw new Error('Method not implemented.');
+    }
+    setPosition(position, marginLeft, marginTop, marginRight, marginBottom, transform) {
+        throw new Error('Method not implemented.');
+    }
+    setVisible(visible) {
+        throw new Error('Method not implemented.');
+    }
+}
+//exports.AppTableItems = AppTableItems;
