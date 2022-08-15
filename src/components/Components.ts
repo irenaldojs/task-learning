@@ -99,7 +99,7 @@ export class AppCustomButton extends Widget {
     private iconSize: string;
     private widthSize: string;
 
-    constructor({ name, text, btnClass = 'btn-success', iconClass = 'bi-question', iconSize = '1rem', widthSize = '100px', onClick = null}:
+    constructor({ name, text, btnClass = 'bg-app-green', iconClass = 'bi-question', iconSize = '1rem', widthSize = '100px', onClick = null}:
         {
             name: string;
             text: string;
@@ -251,7 +251,7 @@ export class AppTableItems extends Widget {
                 const index = (i + 1).toString()
                 tBodyRows += '<tr class="table-light p-0 m-0">'
                 product.getArrayValues(index).forEach( j => {
-                    tBodyRows += `<td class="p-2 m-0">${j}</td>`
+                    tBodyRows += `<td class="p-1 m-0">${j}</td>`
                 })
                 tBodyRows += '</tr>'
             })

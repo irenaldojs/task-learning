@@ -7,11 +7,11 @@
 }
 
 .bg-app-green{
-    background-color: #3CB371;
+    background-color: #2da371;
 }
 
 .font-app-green{
-    color: #3CB371;
+    color: #2da371;
 }
 
 .font-app-size-1{
@@ -58,5 +58,27 @@
   }
 
   .app-border{
-    border-bottom: 0.2em solid #3CB371;
+    border-bottom: 0.2em solid #2da371;
+  }
+  .app-border-white{
+    border-bottom: 0.2em solid #fff;
+  }
+  .app-fs-1{
+    font-size: .7vmax;
+  }
+  .app-fs-2{
+    font-size: 1.5vmax;
+  }
+  .app-fs-3{
+    font-size: 2.4vmax;
+  }
+  .app-fs-4{
+    font-size: 3.4vmax;
+  }
+  .app-fs-5{
+    font-size: 4.1vmax;
+  }
+
+  .app-fb{
+    font-weight: bold;
   }

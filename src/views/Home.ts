@@ -1,7 +1,7 @@
 import { UITextBox, UILabel } from './../Objective-UI';
 import { Product } from './../viewModel/Product';
 import { AppCustomButton, AppTableItems, AppTextBox } from './../components/Components';
-import { Col, Row, UIView, ViewLayout, UIImage, UIHead, VirtualFunction} from "../Objective-UI";
+import { Col, Row, UIView, ViewLayout, UIImage, UIHead, VirtualFunction } from "../Objective-UI";
 
 
 export class HomeView extends UIView {
@@ -10,46 +10,62 @@ export class HomeView extends UIView {
 
     private caixa: string = '01'
     private operador: string = 'Emerson Tinoco'
-    
+
     private produtosCliente: Product[] = [
-        new Product({name: 'Escova de dentes', value: 2.99, count: 2}),
-        new Product({name: 'Pasta de dentes', value: 4.99, count: 1}),
-        new Product({name: 'Shampoo', value: 9.99, count: 2}),
-        new Product({name: 'Fralda', value: 19.99, count: 1}),
-        new Product({name: 'Creme de Pele', value: 29.99, count: 10}),
-        new Product({name: 'Escova de dentes', value: 2.99, count: 2}),
-        new Product({name: 'Pasta de dentes', value: 4.99, count: 1}),
-        new Product({name: 'Shampoo', value: 9.99, count: 2}),
-        new Product({name: 'Fralda', value: 19.99, count: 1}),
-        new Product({name: 'Creme de Pele', value: 29.99, count: 10}),
-        new Product({name: 'Escova de dentes', value: 2.99, count: 2}),
-        new Product({name: 'Pasta de dentes', value: 4.99, count: 1}),
-        new Product({name: 'Shampoo', value: 9.99, count: 2}),
-        new Product({name: 'Fralda', value: 19.99, count: 1}),
-        new Product({name: 'Creme de Pele', value: 29.99, count: 10}),
+        new Product({ name: 'Escova de dentes', value: 2.99, count: 2 }),
+        new Product({ name: 'Pasta de dentes', value: 4.99, count: 1 }),
+        new Product({ name: 'Shampoo', value: 9.99, count: 2 }),
+        new Product({ name: 'Fralda', value: 19.99, count: 1 }),
+        new Product({ name: 'Creme de Pele', value: 29.99, count: 10 }),
+        new Product({ name: 'Escova de dentes', value: 2.99, count: 2 }),
+        new Product({ name: 'Pasta de dentes', value: 4.99, count: 1 }),
+        new Product({ name: 'Shampoo', value: 9.99, count: 2 }),
+        new Product({ name: 'Fralda', value: 19.99, count: 1 }),
+        new Product({ name: 'Creme de Pele', value: 29.99, count: 10 }),
+        new Product({ name: 'Escova de dentes', value: 2.99, count: 2 }),
+        new Product({ name: 'Pasta de dentes', value: 4.99, count: 1 }),
+        new Product({ name: 'Shampoo', value: 9.99, count: 2 }),
+        new Product({ name: 'Fralda', value: 19.99, count: 1 }),
+        new Product({ name: 'Creme de Pele', value: 29.99, count: 10 }),
     ]
 
     // -----------------------------Primeira Coluna ------------------------------------- //
-        // ---- Linha 1 --- //
+    // ---- Linha 1 --- //
     widthButton = '90px'
-    invoiceButtom = new AppCustomButton({name: 'invoiceButtom', btnClass: 'btn-success', text: 'NOTA FISCAL', 
-        iconClass: 'bi-cloud-arrow-up-fill', iconSize: '1.7rem', widthSize: this.widthButton})
-    contingencyButtom = new AppCustomButton({name: 'contingencyButtom', btnClass: 'btn-warning', text: 'CONTINGÊNCIA', 
-        iconClass: 'bi-exclamation-square-fill', iconSize: '1.7rem', widthSize: this.widthButton })
-    balanceButtom = new AppCustomButton({name: 'balanceButtom', btnClass: 'btn-danger', text: 'BALANÇO', 
-        iconClass: 'bi-repeat', iconSize: '1.7rem', widthSize: this.widthButton })
-    headText = new UIHead({ name: 'headText', headType: 'div', text: ''})
+    invoiceButtom = new AppCustomButton({
+        name: 'invoiceButtom', btnClass: 'btn-success', text: 'NOTA FISCAL',
+        iconClass: 'bi-cloud-arrow-up-fill', iconSize: '1.7rem', widthSize: this.widthButton
+    })
+    contingencyButtom = new AppCustomButton({
+        name: 'contingencyButtom', btnClass: 'btn-warning', text: 'CONTINGÊNCIA',
+        iconClass: 'bi-exclamation-square-fill', iconSize: '1.7rem', widthSize: this.widthButton
+    })
+    balanceButtom = new AppCustomButton({
+        name: 'balanceButtom', btnClass: 'btn-danger', text: 'BALANÇO',
+        iconClass: 'bi-repeat', iconSize: '1.7rem', widthSize: this.widthButton
+    })
+    headText = new UIHead({ name: 'headText', headType: 'span', text: '' })
 
-        // ---- Linha 2 --- //
-    tableTitle = new UIHead({ name: 'listTitle', headType: 'h2', text: ''});
-    calculatorButtom = new AppCustomButton({name: 'calculatorButtom', btnClass: 'btn-success', text: 'CALCULADORA', 
-        iconClass: 'bi-calculator-fill', iconSize: '1.7rem', widthSize: this.widthButton })
-        // ---- Linha 3 --- //
-    tableFooter = new UILabel({name: 'tableFooter', text: 'TOTAL DA COMPRA'})
-    tableTotal = new UILabel({name: 'tableTotal', text: ''})
+    // ---- Linha 2 --- //
+    tableTitle = new UIHead({ name: 'listTitle', headType: 'span', text: '' });
+    calculatorButtom = new AppCustomButton({
+        name: 'calculatorButtom', btnClass: 'btn-success', text: 'CALCULADORA',
+        iconClass: 'bi-calculator-fill', iconSize: '1.7rem', widthSize: this.widthButton
+    })
+    // ---- Linha 3 --- //
+    tableFooter = new UILabel({ name: 'tableFooter', text: 'TOTAL DA COMPRA' })
+    tableTotal = new UILabel({ name: 'tableTotal', text: '' })
 
-        // ---- Tabela de Produtos --- //
-    tableItems = new AppTableItems({name: 'tableItems', tableHead: ['#', 'ITEM', 'QTD.', '(R$)']})
+    // ---- Tabela de Produtos --- //
+    tableItems = new AppTableItems({ name: 'tableItems', tableHead: ['#', 'ITEM', 'QTD.', '(R$)'] })
+    // -----------------------------Segunda Coluna ------------------------------------- //
+    // --- Inputs --- //
+    inputProduct = new UITextBox({ name: 'inputProduct', title: 'PRODUTO', maxlength: 20 })
+    inputCount = new UITextBox({ name: 'inputCount', title: 'QUANTIDADE', maxlength: 4 })
+    // --- Inforoações do Produto ---- //
+    itemCount = new UILabel({name: 'itemCount', text: 'QUANTIDADE' })
+    itemUnitValue = new UILabel({name: 'itemUnitValue', text: 'VALOR UNITÁRIO' })
+    itemTotalValue = new UILabel({name: 'itemTotalValue', text: 'VALOR TOTAL' })
 
 
     // -----------------------------Terceira Coluna ------------------------------------- //
@@ -70,11 +86,11 @@ export class HomeView extends UIView {
         HomeView.$ = this;
     }
 
-    private CliqueBotao(){
+    private CliqueBotao() {
         var funcaoJS = new VirtualFunction({
             fnName: 'minhaFuncao',
             fnArgNames: ['nome'],
-            fnContent: `alert(nome)`,            
+            fnContent: `alert(nome)`,
         })
         funcaoJS.call('Irenaldo')
     }
@@ -88,31 +104,48 @@ export class HomeView extends UIView {
                     new Col('listItems', {
                         colHeight: '100vh', colClass: 'col-6 d-flex flex-column p-0 bg-light', rows: [
                             new Row('listItems-div-1', {
-                                rowClass: 'bg-app-grey d-flex flex-row align-items-center justify-content-between p-2', 
-                                rowHeidth: '80px'}),
+                                rowClass: 'bg-app-grey d-flex flex-row align-items-center justify-content-between p-2',
+                                rowHeidth: '80px'
+                            }),
                             new Row('listItems-div-2', {
-                                rowClass: 'd-flex flex-row align-items-center justify-content-between mx-3 py-5 app-border', 
-                                rowHeidth: '80px'}),
+                                rowClass: 'd-flex flex-row align-items-center justify-content-between mx-3 py-5 app-border',
+                                rowHeidth: '80px'
+                            }),
                             new Row('listItems-div-3', {
-                                rowClass: 'd-flex flex-column flex-grow-1 overflow-auto align-items-center justify-content-between  mx-3'}),
-                            new Row('listItems-div-4', {    
-                                rowClass: 'd-flex flex-row align-items-end justify-content-between m-3 pr-5',                       
+                                rowClass: 'd-flex flex-column flex-grow-1 overflow-auto align-items-center justify-content-between mx-3 app-border'
+                            }),
+                            new Row('listItems-div-4', {
+                                rowClass: 'd-flex flex-row align-items-end justify-content-between m-3',
                             }),
                         ]
                     }),
-                    new Col('insertItems', { colHeight: '100vh', colClass: 'col-4 bg-app-green' }),
+                    new Col('insertItems', {
+                        colHeight: '100vh',
+                        colClass: 'col-4 bg-app-green d-flex flex-column justify-content-between text-white', rows: [
+                            new Row('insertItems-div1-inputs', {
+                                rowClass: 'd-flex flex-row align-items-start justify-content-between app-fs-2 my-5 flex-grow-1',
+                                columns: [
+                                    new Col('inputProduct', { colClass: 'w-100 mr-2' }),
+                                    new Col('inputCount', { colClass: ' ' }),
+                                ]
+                            }),
+                        ]
+                    }),
                     new Col('infoPanel', {
-                        colHeight: '100vh', 
-                        colClass: 'col-2 d-flex flex-column justify-content-around pb-3', 
+                        colHeight: '100vh',
+                        colClass: 'col-2 d-flex flex-column justify-content-around pb-3',
                         rows: [
                             new Row('infoPanel-div-1', {}),
-                            new Row('infoPanel-div-2', { 
-                                rowClass: 'justify-content-center', 
-                                rowHeidth: '100px' }),
-                            new Row('infoPanel-div-3', { 
-                                rowClass: 'justify-content-center' }),
-                            new Row('infoPanel-div-4', { 
-                                rowClass: 'px-1 bg-app-grey shadow-app' }),
+                            new Row('infoPanel-div-2', {
+                                rowClass: 'justify-content-center',
+                                rowHeidth: '100px'
+                            }),
+                            new Row('infoPanel-div-3', {
+                                rowClass: 'justify-content-center'
+                            }),
+                            new Row('infoPanel-div-4', {
+                                rowClass: 'px-1 bg-app-grey shadow-app'
+                            }),
                         ]
                     })
                 ]
@@ -126,35 +159,58 @@ export class HomeView extends UIView {
         this.addWidgets('listItems-div-3', this.tableItems)
         this.addWidgets('listItems-div-4', this.tableFooter, this.tableTotal)
 
+        this.addWidgets('inputProduct', this.inputProduct)
+        this.addWidgets('inputCount', this.inputCount)
+
+        this.addWidgets('insertItems', this.itemCount)
+        this.addWidgets('insertItems', this.itemUnitValue)
+        this.addWidgets('insertItems', this.itemTotalValue)
+
         this.addWidgets('infoPanel-div-1', this.logo1)
         this.addWidgets('infoPanel-div-2', this.infoLabel1)
         this.addWidgets('infoPanel-div-3', this.infoLabel2)
         this.addWidgets('infoPanel-div-4', this.logo2, this.logo3)
 
 
-        
+
     }
     onViewDidLoad(): void {
         // Cabeçalho
-        this.headText.addCSSClass('font-app-green')        
+        this.headText.addCSSClass('font-app-green')
         this.headText.addCSSClass('flex-grow-1')
-        this.headText.addCSSClass('text-right')        
-        this.headText.applyCSS('font-weight', 'bold')
+        this.headText.addCSSClass('text-right')
+        this.headText.addCSSClass('app-fb')
+        this.headText.addCSSClass('app-fs-2')
         this.headText.setText(`${this.operador.toUpperCase()} - CAIXA ${this.caixa}`)
         // 
         this.tableFooter.addCSSClass('font-app-green')
-        this.tableFooter.addCSSClass('font-app-footer')
+        this.tableFooter.addCSSClass('app-fs-3')
+        this.tableFooter.addCSSClass('app-fb')
+
+        const heightInput = '50px'
+        //
+        this.inputCount.applyCSS('height', heightInput)
+        this.inputCount.txInput.classList.add('app-fs-2')
+        this.inputProduct.applyCSS('height', heightInput)
+        this.inputProduct.txInput.classList.add('app-fs-2')
+
+        const infoClass = 'label app-fs-3 app-border-white my-4 pb-3'
+
+        this.itemCount.label.className = infoClass
+        this.itemUnitValue.label.className = infoClass
+        this.itemTotalValue.label.className = infoClass
 
         // Lista
         this.tableTitle.setText('Lista de Compras'.toUpperCase())
         this.tableTitle.addCSSClass('font-app-green')
+        this.tableTitle.addCSSClass('app-fs-3')
 
         this.tableItems.setProdutcs(this.produtosCliente)
-        this.tableTotal.setText("R$ "+this.totalOrder())
+        this.tableTotal.setText("R$ " + this.totalOrder())
         this.tableTotal.addCSSClass('font-app-total')
 
     }
-    
+
     totalOrder(): string {
         let total = this.produtosCliente.map(product => product.getTotalValues())
             .reduce((previousValue, currentValue) => previousValue + currentValue)

@@ -60,7 +60,7 @@ class AppTextBox extends Widget {
 //exports.AppTextBox = AppTextBox;
 // Use Icones Bootstrap * "bi bi-xxx"
 class AppCustomButton extends Widget {
-    constructor({ name, text, btnClass = 'btn-success', iconClass = 'bi-question', iconSize = '1rem', widthSize = '100px', onClick = null }) {
+    constructor({ name, text, btnClass = 'bg-app-green', iconClass = 'bi-question', iconSize = '1rem', widthSize = '100px', onClick = null }) {
         super(name);
         this.text = text;
         this.btnClass = btnClass;
@@ -167,7 +167,7 @@ class AppTableItems extends Widget {
                 const index = (i + 1).toString();
                 tBodyRows += '<tr class="table-light p-0 m-0">';
                 product.getArrayValues(index).forEach(j => {
-                    tBodyRows += `<td class="p-2 m-0">${j}</td>`;
+                    tBodyRows += `<td class="p-1 m-0">${j}</td>`;
                 });
                 tBodyRows += '</tr>';
             });
